@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="zwkfb_compose">
+    <output-path>$PROJECT_DIR$/zwkfb_compose/build/libs</output-path>
+    <root id="archive" name="zwkfb_compose.jar">
+      <element id="module-output" name="zwkfb.zwkfb_compose.androidMain" />
+    </root>
+  </artifact>
+</component>
