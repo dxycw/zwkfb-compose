@@ -153,7 +153,9 @@ fun 系统语言设置界面(){
     Column (modifier = Modifier.fillMaxSize()) {
 
         val count = 4
-        val colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+        val colors = ListItemDefaults.colors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
+        )
         Column(
             modifier = Modifier.selectableGroup().padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
@@ -267,8 +269,7 @@ fun SegmentedListDemo() {
             "Strawberry",
             "Tangerine",
             "Watermelon"
-        )
-            .groupBy { it.first() }   // Map<A,List<>>
+        ).groupBy { it.first() }   // Map<A,List<>>
     }
 
     LazyColumn(Modifier.fillMaxSize()) {

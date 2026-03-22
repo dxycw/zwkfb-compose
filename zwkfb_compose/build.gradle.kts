@@ -45,44 +45,31 @@ kotlin {
 //                implementation("org.jetbrains.compose.components:components-ui-tooling-preview:1.9.3")
 //                implementation("org.jetbrains.compose.components:components-resources:1.9.3")
 
-
-//                api(compose.runtime)
-//                api(compose.foundation)
-//                api(compose.material3)
-//                api(compose.ui)
-//                api(compose.uiTooling)
-////                implementation(compose.components.resources)
-////                api(compose.preview)
-//                api(compose.components.uiToolingPreview)
-
-//                api(libs.androidx.lifecycle.viewmodelCompose)
-//                api(libs.androidx.lifecycle.runtimeCompose)
-
                 //========================================================================
 
                 api("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
-                api("androidx.activity:activity-compose:1.13.0-alpha01")
+                api("androidx.activity:activity-compose:1.13.0")
 
                 //========================================================================
 
-                api("androidx.compose:compose-bom:2025.11.01")
+                api("androidx.compose:compose-bom:2026.03.00")
 
                 //========================================================================
 
                 // 是 Jetpack Compose 的「核心 UI 框架」依赖库，它提供了构建任何 Compose 界面所必需的最底层 API 和运行时能力。
                 // 就是 Compose 世界的“地基”：没有它，任何 @Composable 函数都无法绘制到屏幕上。
-                api("androidx.compose.ui:ui:1.10.1")
+                api("androidx.compose.ui:ui:1.11.0-beta01")
                 // 是 Jetpack Compose 官方提供的图形绘制与图像处理库，属于 compose.ui 体系中的 图形子模块。
-                api("androidx.compose.ui:ui-graphics:1.10.1")
-                api("androidx.compose.ui:ui-tooling:1.10.1")
+                api("androidx.compose.ui:ui-graphics:1.11.0-beta01")
+                api("androidx.compose.ui:ui-tooling:1.11.0-beta01")
                 // 是 Jetpack Compose 官方提供的“预览注解支持库”，仅包含在开发阶段用于 Android Studio 预览功能的注解与接口，不会被打包进正式发布的 APK 中。
-                api("androidx.compose.ui:ui-tooling-preview:1.10.1")
+                api("androidx.compose.ui:ui-tooling-preview:1.11.0-beta01")
 
                 //========================================================================
 
                 // 是 Jetpack Compose 官方提供的 Material Design 组件库，包含 Material Design 的所有组件，
                 // 适用于 Jetpack Compose 项目。
-                api("androidx.compose.material3:material3:1.5.0-alpha12")
+                api("androidx.compose.material3:material3:1.5.0-alpha15")
 
                 //========================================================================
 
@@ -99,13 +86,13 @@ kotlin {
                 //========================================================================
 
                 // 是 Jetpack Compose 中 Foundation Layout 模块的 Android 专用实现版本，它提供了用于构建响应式 UI 的核心布局组件和工具。
-                api("androidx.compose.foundation:foundation:1.11.0-alpha03")
+                api("androidx.compose.foundation:foundation:1.11.0-beta01")
 
                 //========================================================================
 
                 //  是 Navigation 组件在 Jetpack Compose 中的官方集成库，简称 “Compose Navigation”。
                 // 它让你在 100% Compose 项目 里，用声明式 API 完成导航图的构建、路由跳转、参数传递、深层链接、返回栈管理等所有导航需求。
-                api("androidx.navigation:navigation-compose:2.9.6") // 导航
+                api("androidx.navigation:navigation-compose:2.10.0-alpha01") // 导航
 
                 //========================================================================
 
@@ -136,26 +123,33 @@ kotlin {
 //                implementation(libs.androidx.compose.material3)
 //                implementation(libs.androidx.activity.compose)
 
-                api("com.github.dxycw:zwkfb_view:0.2.5"){
-                    exclude("com.mysql", "mysql-connector-j")
+                api("com.github.dxycw:zwkfb_view:0.3.6"){
 
-                    exclude("com.github.OCNYang.ImmersionBar", "immersionbar-ktx")
-                    exclude("com.gitee.zackratos", "UltimateBarX")
-
-                    // 如果使用了“media3”的"media3-datasource-okhttp"这个也要注释掉。
+//                    exclude("mysql", "mysql-connector-java")
+//
+//                    exclude("androidx.webkit", "webkit")
+//
+//                    exclude("com.github.OCNYang.ImmersionBar", "immersionbar-ktx")
+//                    exclude("com.gitee.zackratos", "UltimateBarX")
+//
+//                    // 如果使用了“media3”的"media3-datasource-okhttp"这个也要注释掉。
 //                    exclude("com.squareup.okhttp3", "okhttp")
 //                    exclude("com.google.code.gson", "gson")
 //                    exclude("io.noties.markwon", "core")
-
+//
 //                    exclude("androidx.media3", "media3-exoplayer")
 //                    exclude("androidx.media3", "media3-datasource-okhttp")
 //                    exclude("androidx.media3", "media3-ui")
-
+//
 //                    exclude("com.github.CarGuo.GSYVideoPlayer", "gsyvideoplayer")
 //                    exclude("com.github.bilibili.DanmakuFlameMaster", "DanmakuFlameMaster")
+//
+//                    // 使用下面库需要 需要添加 “https://maven.mozilla.org/maven2” 仓库，否则不要注释掉，不添加仓库会报错。
+//                    exclude("org.mozilla.geckoview", "geckoview-nightly")
+//                    exclude("org.mozilla.geckoview", "geckoview-exoplayer2-nightly")
+//
+//                    exclude("com.github.jenly1314", "zxing-lite")
 
-                    exclude("org.mozilla.geckoview", "geckoview-nightly")
-                    exclude("org.mozilla.geckoview", "geckoview-exoplayer2-nightly")
                 }
 
             }

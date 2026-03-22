@@ -31,15 +31,15 @@ import androidx.compose.ui.unit.TextUnit
  *
  * 为了使用方便，[TextStyle]中常用的参数也出现在这里。优先顺序如下：
  * - 如果在此明确设置了一个参数（即，它不是 `null` 或 [TextUnit.Unspecified]），则*该参数将始终被使用。
- * - 如果参数未设置（`null` 或 [TextUnit.Unspecified]），则将使用来自 [style] 的对应值。
+ * - 如果参数未设置（`null` 或 [TextUnit.Unspecified]），则将使用来自 [样式] 的对应值。
  *
- * 此外，对于[颜色]，如果未设置[颜色]，并且[style]没有颜色，则*将使用[LocalContentColor]。
+ * 此外，对于[颜色]，如果未设置[颜色]，并且[样式]没有颜色，则*将使用[LocalContentColor]。
  *
  * @param 文本 要显示的文本
  * @param 修饰符 要应用于此布局节点的[修饰符]
- * @param 颜色 应用于文本的[颜色]。如果是[Color.Unspecified]，且[style]未设置颜色， 此时将使用[LocalContentColor]。
+ * @param 颜色 应用于文本的[颜色]。如果是[Color.Unspecified]，且[样式]未设置颜色， 此时将使用[LocalContentColor]。
  * @param 自动大小 为此文本可组合组件启用自动调整大小。查找可在可用空间中适用的最大字体大小，并使用该大小布局文本。
- * 这会执行多次布局遍历，可能比使用固定字体大小慢。这优先于通过[字体大小]和[style]定义的大小。参见[TextAutoSize]。
+ * 这会执行多次布局遍历，可能比使用固定字体大小慢。这优先于通过[字体大小]和[样式]定义的大小。参见[TextAutoSize]。
  * @param 字体大小 绘制文本时使用字形的大小。参见[TextStyle.fontSize]。
  * @param 字体样式 绘制字母时使用的字体变体类型（例如，斜体）。参见  [TextStyle.fontStyle]。
  * @param 字体粗细 绘制文本时使用的字体粗细（例如，[FontWeight.Bold]）。

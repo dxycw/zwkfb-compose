@@ -1,13 +1,11 @@
 package com.dxyc.zwkfb_compose
 
 import android.content.res.Configuration
-import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Menu
@@ -27,9 +25,6 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -39,8 +34,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TriStateCheckbox
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberDrawerState
-import androidx.compose.material3.rememberSliderState
-import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -57,32 +50,26 @@ import com.dxyc.zwkfb_compose.ui.theme.AppTheme
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import 安卓.媒体.媒体播放器
 import 安卓x.活动.启用边缘到边缘
 import 安卓x.活动.组件活动
 import 安卓x.活动.组合.本地活动
 import 安卓x.活动.组合.置内容
 import 安卓x.组合.基础.布局.列
 import 安卓x.组合.基础.文本.选择.选择容器
-import 安卓x.组合.材质3.分段按钮
-import 安卓x.组合.材质3.单选分段按钮行
 import 安卓x.组合.材质3.图标
 import 安卓x.组合.材质3.图标按钮
-import 安卓x.组合.材质3.垂直滑块
 import 安卓x.组合.材质3.按钮
 import 安卓x.组合.材质3.文本
 import 安卓x.组合.材质3.日期选择器
 import 安卓x.组合.材质3.模态底部面板
-import 安卓x.组合.材质3.滑块
 import 安卓x.组合.材质3.线性进度指示器
 import 安卓x.组合.材质3.脚手架
 import 安卓x.组合.界面.修饰符
-import 自定义.活动类.切换窗口
 
 
 class MainActivity : 组件活动() {
-    override fun 创建回调(保存实例状态: Bundle?) {
-        super.创建回调(保存实例状态)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         启用边缘到边缘()
         置内容 {
             Home()
@@ -105,27 +92,29 @@ fun Home() {
             修饰符 = 修饰符.fillMaxSize(),
             提示条容器 = { SnackbarHost(状态) },
             悬浮操作按钮 = {
-                ExtendedFloatingActionButton(onClick = {
-                    范围.launch {
-                        val result = 状态.showSnackbar(
-                            message = "Snackbar Message",//消息内容文字
-                            // Action 按钮显示文字,设置后会有一个 Action 按钮
-                            actionLabel = "确定",
-                            // 显示时长 Short、Long 参考 Toast, Indefinite 一直显示 不会自动消失
-                            duration = SnackbarDuration.Short,//Indefinite,
-                            // 是否显示 Dismiss Action 按钮 ，true 的话最右边会有一个 X 的按钮
-//                            withDismissAction = true
-                        )
+                ExtendedFloatingActionButton(
+                    onClick = {
+                        范围.launch {
+                            val result = 状态.showSnackbar(
+                                message = "Snackbar Message",//消息内容文字
+                                // Action 按钮显示文字,设置后会有一个 Action 按钮
+                                actionLabel = "确定",
+                                // 显示时长 Short、Long 参考 Toast, Indefinite 一直显示 不会自动消失
+                                duration = SnackbarDuration.Short,//Indefinite,
+                                // 是否显示 Dismiss Action 按钮 ，true 的话最右边会有一个 X 的按钮
+    //                            withDismissAction = true
+                            )
 
-                        when (result) {
-                            //点击了 显示时配置的 Action 按钮
-                            SnackbarResult.ActionPerformed -> {}
-                            //点击了 X 按钮
-                            SnackbarResult.Dismissed -> {}
+                            when (result) {
+                                //点击了 显示时配置的 Action 按钮
+                                SnackbarResult.ActionPerformed -> {}
+                                //点击了 X 按钮
+                                SnackbarResult.Dismissed -> {}
+                            }
                         }
+//                        上下文!!.切换窗口(欢迎窗口::class.java)
                     }
-                    上下文!!.切换窗口(欢迎窗口::class.java)
-                }) { 文本(文本 = "显示") }
+                ) { 文本(文本 = "显示") }
             },
         ) { 内边距 ->
 
@@ -139,35 +128,38 @@ fun Home() {
 
                     按钮(单击回调 = { 显示日期选择器 = !显示日期选择器 }) { 文本(文本 = "显示") }
 
-
-
                     图标按钮(
                         单击回调 = {}
-                    ){
-                        图标(
-                            Icons.Filled.ArrowDropDown,
-                            内容描述 = null
-                        )
-                    }
+                    ){ 图标(Icons.Filled.ArrowDropDown, 内容描述 = null) }
+                    var 状态2 by remember { mutableStateOf(false) }
                     RadioButton(
-                        selected = true,
+                        selected = 状态2,
                         onClick = {
-
+                            状态2 = !状态2
                         }
                     )
+
+                    var 状态1 by remember { mutableStateOf(false) }
                     Checkbox(
-                        checked = false,
+                        checked = 状态1,
                         onCheckedChange = {
-
+                            状态1 = it
                         }
                     )
+
+                    var 状态 by remember { mutableStateOf(ToggleableState.Indeterminate) }
                     TriStateCheckbox(
-                        state = ToggleableState.Indeterminate,
+                        state = 状态,
                         onClick = {
-
+                            if (状态 == ToggleableState.Off) {
+                                状态 = ToggleableState.On
+                            } else if (状态 == ToggleableState.On) {
+                                状态 = ToggleableState.Indeterminate
+                            } else {
+                                状态 = ToggleableState.Off
+                            }
                         }
                     )
-
 
                 }
             }
@@ -191,7 +183,6 @@ fun Home() {
                 }
 
             }
-
 
         }
     }

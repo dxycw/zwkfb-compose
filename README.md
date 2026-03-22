@@ -38,14 +38,14 @@ dependencyResolutionManagement {
 * Groovy 版本：
 ```groovy
 dependencies {
-    implementation 'com.github.dxycw:zwkfb_compose:0.1.2'
+    implementation 'com.github.dxycw:zwkfb_compose:0.1.3'
 }
 ```
 
 * Kotlin 版本：
 ```kotlin
 dependencies {
-    implementation("com.github.dxycw:zwkfb_compose:0.1.2")
+    implementation("com.github.dxycw:zwkfb_compose:0.1.3")
 }
 ```
 
@@ -58,238 +58,37 @@ dependencies {
 ## 官方依赖库
 
 * androidx.lifecycle:lifecycle-runtime-ktx:2.10.0
-* androidx.activity:activity-compose:1.13.0-alpha01
-* androidx.compose:compose-bom:2025.11.01
-* androidx.compose.ui:ui:1.10.1
-* androidx.compose.ui:ui-graphics:1.10.1
-* androidx.compose.ui:ui-tooling:1.10.1
-* androidx.compose.ui:ui-tooling-preview:1.10.1
-* androidx.compose.material3:material3:1.5.0-alpha12
+* androidx.activity:activity-compose:1.13.0
+* androidx.compose:compose-bom:2026.03.00
+* androidx.compose.ui:ui:1.11.0-beta01
+* androidx.compose.ui:ui-graphics:1.11.0-beta01
+* androidx.compose.ui:ui-tooling:1.11.0-beta01
+* androidx.compose.ui:ui-tooling-preview:1.11.0-beta01
+* androidx.compose.material3:material3:1.5.0-alpha15
 * androidx.compose.material:material-icons-extended:1.7.8
-* androidx.compose.foundation:foundation:1.11.0-alpha03
-* androidx.navigation:navigation-compose:2.9.6
+* androidx.compose.foundation:foundation:1.11.0-beta01
+* androidx.navigation:navigation-compose:2.10.0-alpha01
 
 ## 其他依赖库
 
-* com.github.dxycw:zwkfb_view:0.2.5
+* com.github.dxycw:zwkfb_view:0.3.6
 
 # 打包体积压缩
 
-## 一、打包分包
-
-1、在项目的 build.gradle 文件中使用“splits”配置分包，如下配置：
-
-* Groovy 版本：
-
-```groovy
-android{
-    splits {
-        abi {
-            enable true // 是否开启ABI分割
-            reset()  // 清空默认的abi配置
-            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64" // 指定要支持的ABI
-            universalApk false     // 是否生成通用apk
-        }
-    }
-}
-```
-
-* Kotlin 版本：
-
-```kotlin
-android{
-    splits {
-        abi {
-            isEnable = true // 是否开启ABI分割
-            reset()  // 清空默认的abi配置
-            include("armeabi-v7a", "arm64-v8a", "x86", "x86_64") // 指定要支持的ABI
-            isUniversalApk = false     // 是否生成通用apk
-        }
-    }
-}
-```
-
-## 二、混淆规则
-
-1、在项目的 build.gradle 文件中使用了混淆，如下配置：
-
-* Groovy 版本：
-
-```groovy
-android {
-    buildTypes {
-        release {
-            minifyEnabled true // 是否混淆
-            shrinkResources true // 是否压缩资源
-        }
-    }
-}
-```
-
-* Kotlin 版本：
-
-```kotlin
-android {
-    buildTypes {
-        release {
-            isMinifyEnabled = true // 是否混淆
-            isShrinkResources = true // 是否压缩资源
-        }
-    }
-}
-```
-
-2、使用“MySQL”数据库，需要添加以下混淆规则，否则应用不能编译（需要放到proguard-rules.pro文件中）：
-
-```
--dontwarn com.oracle.bmc.ConfigFileReader$ConfigFile
--dontwarn com.oracle.bmc.ConfigFileReader
--dontwarn io.opentelemetry.api.GlobalOpenTelemetry
--dontwarn io.opentelemetry.api.OpenTelemetry
--dontwarn io.opentelemetry.api.trace.Span
--dontwarn io.opentelemetry.api.trace.SpanBuilder
--dontwarn io.opentelemetry.api.trace.SpanContext
--dontwarn io.opentelemetry.api.trace.SpanKind
--dontwarn io.opentelemetry.api.trace.StatusCode
--dontwarn io.opentelemetry.api.trace.Tracer
--dontwarn io.opentelemetry.context.Context
--dontwarn io.opentelemetry.context.Scope
--dontwarn io.opentelemetry.context.propagation.ContextPropagators
--dontwarn io.opentelemetry.context.propagation.TextMapPropagator
--dontwarn io.opentelemetry.context.propagation.TextMapSetter
--dontwarn java.lang.management.ManagementFactory
--dontwarn java.lang.management.ThreadInfo
--dontwarn java.lang.management.ThreadMXBean
--dontwarn java.sql.JDBCType
--dontwarn java.sql.SQLType
--dontwarn javax.management.MBeanServer
--dontwarn javax.management.ObjectInstance
--dontwarn javax.management.ObjectName
--dontwarn javax.naming.InvalidNameException
--dontwarn javax.naming.ldap.LdapName
--dontwarn javax.naming.ldap.Rdn
--dontwarn javax.security.auth.callback.NameCallback
--dontwarn javax.security.auth.login.AppConfigurationEntry
--dontwarn javax.security.auth.login.Configuration
--dontwarn javax.security.auth.login.LoginContext
--dontwarn javax.security.sasl.Sasl
--dontwarn javax.security.sasl.SaslClient
--dontwarn javax.security.sasl.SaslClientFactory
--dontwarn javax.security.sasl.SaslException
--dontwarn javax.xml.stream.XMLEventWriter
--dontwarn javax.xml.stream.XMLInputFactory
--dontwarn javax.xml.stream.XMLOutputFactory
--dontwarn javax.xml.stream.XMLStreamException
--dontwarn javax.xml.stream.XMLStreamReader
--dontwarn javax.xml.transform.stax.StAXResult
--dontwarn javax.xml.transform.stax.StAXSource
-```
-
-3、使用“GSYVideoPlayer”视频播放库，需要添加以下混淆规则，否则视频不能正常播放（需要放到proguard-rules.pro文件中）：
-
-```
--keep class com.shuyu.gsyvideoplayer.video.** { *; }
--dontwarn com.shuyu.gsyvideoplayer.video.**
--keep class com.shuyu.gsyvideoplayer.video.base.** { *; }
--dontwarn com.shuyu.gsyvideoplayer.video.base.**
--keep class com.shuyu.gsyvideoplayer.utils.** { *; }
--dontwarn com.shuyu.gsyvideoplayer.utils.**
--keep class com.shuyu.gsyvideoplayer.player.** {*;}
--dontwarn com.shuyu.gsyvideoplayer.player.**
--keep class tv.danmaku.ijk.** { *; }
--dontwarn tv.danmaku.ijk.**
--keep class androidx.media3.** {*;}
--keep interface androidx.media3.**
-
--keep class com.shuyu.alipay.** {*;}
--keep interface com.shuyu.alipay.**
-
--keep public class * extends android.view.View{
-    *** get*();
-    void set*(***);
-    public <init>(android.content.Context);
-    public <init>(android.content.Context, java.lang.Boolean);
-    public <init>(android.content.Context, android.util.AttributeSet);
-    public <init>(android.content.Context, android.util.AttributeSet, int);
-}
-```
-
-## 三、去掉未使用的依赖库
-
-1、在项目的 build.gradle 文件中添加用不到的依赖项：
-
-* Groovy 版本：
-
-```groovy
-dependencies {
-    implementation 'com.github.dxycw:zwkfb_compose:0.1.2'{
-
-        exclude group: 'com.mysql', module: 'mysql-connector-j'
-
-        exclude group: 'com.github.OCNYang.ImmersionBar', module: 'immersionbar-ktx'
-        exclude group: "com.gitee.zackratos", module: "UltimateBarX"
-
-        // 如果使用了“media3”的"media3-datasource-okhttp"这个也要注释掉。
-        exclude group: "com.squareup.okhttp3", module: "okhttp"
-        exclude group: "com.google.code.gson", module: "gson"
-        exclude group: "io.noties.markwon", module: "core"
-
-        exclude group: "androidx.media3", module: "media3-exoplayer"
-        exclude group: "androidx.media3", module: "media3-datasource-okhttp"
-        exclude group: "androidx.media3", module: "media3-ui"
-
-        exclude group: "com.github.CarGuo.GSYVideoPlayer", module: "gsyvideoplayer"
-        exclude group: "com.github.bilibili.DanmakuFlameMaster", module: "DanmakuFlameMaster"
-
-        // 使用下面库需要 需要添加 “https://maven.mozilla.org/maven2” 仓库，否则不要注释掉，不添加仓库会报错。
-        exclude group: "org.mozilla.geckoview", module: "geckoview-nightly"
-        exclude group: "org.mozilla.geckoview", module: "geckoview-exoplayer2-nightly"
-
-        //如果使用图标，请把material-icons-extended依赖库注释掉
-        exclude group: "androidx.compose.material", module: "material-icons-extended"
-        
-    }
-}
-```
-
-* Kotlin 版本：
-
-```kotlin
-dependencies {
-    implementation("com.github.dxycw:zwkfb_compose:0.1.2"){
-
-        exclude("com.mysql", "mysql-connector-j")
-
-        exclude("com.github.OCNYang.ImmersionBar", "immersionbar-ktx")
-        exclude("com.gitee.zackratos", "UltimateBarX")
-
-        // 如果使用了“media3”的"media3-datasource-okhttp"这个也要注释掉。
-        exclude("com.squareup.okhttp3", "okhttp")
-        exclude("com.google.code.gson", "gson")
-        exclude("io.noties.markwon", "core")
-
-        exclude("androidx.media3", "media3-exoplayer")
-        exclude("androidx.media3", "media3-datasource-okhttp")
-        exclude("androidx.media3", "media3-ui")
-
-        exclude("com.github.CarGuo.GSYVideoPlayer", "gsyvideoplayer")
-        exclude("com.github.bilibili.DanmakuFlameMaster", "DanmakuFlameMaster")
-
-        // 使用下面库需要 需要添加 “https://maven.mozilla.org/maven2” 仓库，否则不要注释掉，不添加仓库会报错。
-        exclude("org.mozilla.geckoview", "geckoview-nightly")
-        exclude("org.mozilla.geckoview", "geckoview-exoplayer2-nightly")
-
-        //如果使用图标，请把material-icons-extended依赖库注释掉
-        exclude("androidx.compose.material", "material-icons-extended")
-        
-    }
-}
-```
-
-2、如果在你的项目中使用到了以上依赖库，注释掉或在项目中添加需要的依赖库即可。
+如果使用混淆并且使用了“MySQL”、“Geckoview”依赖库，请查看[打包体积压缩](%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A9.md)。
 
 
 # 更新内容
+
+## 0.1.3
+
+* 更新 com.github.dxycw:zwkfb_view依赖库版本为0.3.6；
+* 更新 androidx.compose.material3:material3依赖库版本为1.5.0-alpha15；
+* 更新 androidx.compose.ui的所有依赖库版本为1.11.0-beta01；
+* 更新 androidx.activity:activity-compose依赖库版本为1.13.0；
+* 更新 androidx.compose.foundation:foundation依赖库版本为1.11.0-beta01；
+* 更新 androidx.navigation:navigation-compose依赖库版本为2.10.0-alpha01；
+* 更新 androidx.compose:compose-bom依赖库版本为2026.03.00；
 
 ## 0.1.2
 
@@ -301,7 +100,6 @@ dependencies {
 * 添加 com.github.dxycw:zwkfb_view依赖库添加com.gitee.zackratos:UltimateBarX依赖库；
 * 添加 com.github.dxycw:zwkfb_view依赖库添加org.mozilla.geckoview:geckoview-nightly依赖库(注意：添加此依赖库需要添加 “https://maven.mozilla.org/maven2” 仓库，请查看使用方法)；
 * 添加 com.github.dxycw:zwkfb_view依赖库添加org.mozilla.geckoview:geckoview-exoplayer2-nightly依赖库(注意：添加此依赖库需要添加 “https://maven.mozilla.org/maven2” 仓库，请查看使用方法)；
-
 
 ## 0.1.1
 
@@ -343,4 +141,4 @@ dependencies {
 
 # 老版本更新日志
 
-[0_0系列更新内容](%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0_0%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9.md)
+[0.0.x系列更新内容](%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/0.0.x%E7%B3%BB%E5%88%97%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9.md)

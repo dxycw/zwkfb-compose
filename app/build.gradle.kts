@@ -69,6 +69,13 @@ dependencies {
 
     implementation(project(":zwkfb_compose")){
 
+        exclude("mysql", "mysql-connector-java")
+
+        exclude("androidx.webkit", "webkit")
+
+        exclude("com.github.OCNYang.ImmersionBar", "immersionbar-ktx")
+        exclude("com.gitee.zackratos", "UltimateBarX")
+
         // 如果使用了“media3”的"media3-datasource-okhttp"这个也要注释掉。
         exclude("com.squareup.okhttp3", "okhttp")
         exclude("com.google.code.gson", "gson")
@@ -81,19 +88,18 @@ dependencies {
         exclude("com.github.CarGuo.GSYVideoPlayer", "gsyvideoplayer")
         exclude("com.github.bilibili.DanmakuFlameMaster", "DanmakuFlameMaster")
 
+        // 使用下面库需要 需要添加 “https://maven.mozilla.org/maven2” 仓库，否则不要注释掉，不添加仓库会报错。
+        exclude("org.mozilla.geckoview", "geckoview-nightly")
+        exclude("org.mozilla.geckoview", "geckoview-exoplayer2-nightly")
+
+        exclude("com.github.jenly1314", "zxing-lite")
+
         //如果使用图标，请把material-icons-extended依赖库注释掉
 //        exclude("androidx.compose.material", "material-icons-extended")
 
     }
 
-//    implementation(libs.androidx.core.ktx)
-//    implementation(libs.androidx.lifecycle.runtime.ktx)
-//    implementation(libs.androidx.activity.compose)
-//    implementation(platform(libs.androidx.compose.bom))
-//    implementation(libs.androidx.compose.ui)
-//    implementation(libs.androidx.compose.ui.graphics)
-//    implementation(libs.androidx.compose.ui.tooling.preview)
-//    implementation(libs.androidx.compose.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
