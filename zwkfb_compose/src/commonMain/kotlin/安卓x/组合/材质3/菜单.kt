@@ -210,7 +210,7 @@ fun 下拉菜单项(
     尾随图标: @Composable (() -> Unit)? = null,
     已启用: Boolean = true,
     颜色: MenuItemColors = MenuDefaults.itemColors(),
-    内容内边距: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    内容内边距: PaddingValues = MenuDefaults.DropdownMenuSelectableItemContentPadding,
     交互源: MutableInteractionSource? = null,
 ) {
     DropdownMenuItem(
@@ -263,8 +263,9 @@ fun 下拉菜单项(
     尾随图标: @Composable (() -> Unit)? = null,
     已启用: Boolean = true,
     颜色: MenuItemColors = MenuDefaults.selectableItemColors(),
-    内容内边距: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    内容内边距: PaddingValues = MenuDefaults.DropdownMenuSelectableItemContentPadding,
     交互源: MutableInteractionSource? = null,
+    辅助文本: @Composable (() -> Unit)? = null,
 ) {
     DropdownMenuItem(
         checked = 已选中,
@@ -279,6 +280,7 @@ fun 下拉菜单项(
         colors = 颜色,
         contentPadding = 内容内边距,
         interactionSource = 交互源,
+        supportingText = 辅助文本
     )
 }
 
@@ -318,8 +320,9 @@ fun 下拉菜单项(
     尾随图标: @Composable (() -> Unit)? = null,
     已启用: Boolean = true,
     颜色: MenuItemColors = MenuDefaults.selectableItemColors(),
-    内容内边距: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    内容内边距: PaddingValues = MenuDefaults.DropdownMenuSelectableItemContentPadding,
     交互源: MutableInteractionSource? = null,
+    辅助文本: @Composable (() -> Unit)? = null,
 ) {
     DropdownMenuItem(
         selected = 已选择,
@@ -328,12 +331,13 @@ fun 下拉菜单项(
         shapes = 形状,
         modifier = 修饰符,
         leadingIcon = 前导图标,
-        checkedLeadingIcon = 已选中前导图标,
+        selectedLeadingIcon = 已选中前导图标,
         trailingIcon = 尾随图标,
         enabled = 已启用,
         colors = 颜色,
         contentPadding = 内容内边距,
         interactionSource = 交互源,
+        supportingText = 辅助文本,
     )
 }
 

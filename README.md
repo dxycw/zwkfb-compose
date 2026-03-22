@@ -89,6 +89,7 @@ dependencies {
 * 更新 androidx.compose.foundation:foundation依赖库版本为1.11.0-beta01；
 * 更新 androidx.navigation:navigation-compose依赖库版本为2.10.0-alpha01；
 * 更新 androidx.compose:compose-bom依赖库版本为2026.03.00；
+* 修复 “菜单”更新material3后报错的Bug；
 
 ## 0.1.2
 
