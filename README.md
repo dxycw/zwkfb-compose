@@ -38,14 +38,14 @@ dependencyResolutionManagement {
 * Groovy 版本：
 ```groovy
 dependencies {
-    implementation 'com.github.dxycw:zwkfb_compose:0.1.3'
+    implementation 'com.github.dxycw:zwkfb_compose:0.1.4'
 }
 ```
 
 * Kotlin 版本：
 ```kotlin
 dependencies {
-    implementation("com.github.dxycw:zwkfb_compose:0.1.3")
+    implementation("com.github.dxycw:zwkfb_compose:0.1.4")
 }
 ```
 
@@ -57,17 +57,18 @@ dependencies {
 
 ## 官方依赖库
 
-* androidx.lifecycle:lifecycle-runtime-ktx:2.10.0
-* androidx.activity:activity-compose:1.13.0
-* androidx.compose:compose-bom:2026.03.00
-* androidx.compose.ui:ui:1.11.0-beta01
-* androidx.compose.ui:ui-graphics:1.11.0-beta01
-* androidx.compose.ui:ui-tooling:1.11.0-beta01
-* androidx.compose.ui:ui-tooling-preview:1.11.0-beta01
-* androidx.compose.material3:material3:1.5.0-alpha15
-* androidx.compose.material:material-icons-extended:1.7.8
-* androidx.compose.foundation:foundation:1.11.0-beta01
-* androidx.navigation:navigation-compose:2.10.0-alpha01
+* org.jetbrains.compose.runtime:runtime:1.10.3
+* org.jetbrains.compose.foundation:foundation:1.10.3
+* org.jetbrains.compose.material3:material3:1.11.0-alpha04
+* org.jetbrains.compose.ui:ui:1.11.0-alpha04
+* org.jetbrains.compose.ui:ui-graphics:1.11.0-alpha04
+* org.jetbrains.compose.ui:ui-tooling:1.11.0-alpha04
+* org.jetbrains.compose.ui:ui-tooling-preview:1.11.0-alpha04
+* org.jetbrains.compose.components:components-resources:1.11.0-alpha04
+* org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0-alpha01
+* org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.11.0-alpha01
+* org.jetbrains.compose.material:material-icons-extended:1.7.3
+* org.jetbrains.androidx.navigation:navigation-compose:2.9.2
 
 ## 其他依赖库
 
@@ -79,6 +80,23 @@ dependencies {
 
 
 # 更新内容
+
+## 0.1.4
+
+* 添加 “下拉逐渐隐藏动画并启动活动”、“下拉逐渐隐藏动画”、“组件变灰”、“单击回调变灰”、“单击回调没有波纹”、“旋转动画”、“滑动回弹”动画函数；
+* 添加 “修复网页打开编辑框键盘显示的Bug”函数；
+* 删除 androidx.compose:compose-bom依赖库；
+* 修改 androidx.lifecycle:lifecycle-runtime-ktx 依赖库为 org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose 和 org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose 依赖库版本为 2.11.0-alpha01；
+* 修改 androidx.activity:activity-compose 和 androidx.navigation:navigation-compose 依赖库版本为 org.jetbrains.androidx.navigation:navigation-compose 依赖库版本为 2.9.2；
+* 修改 androidx.compose.material3:material3 依赖库版本为 org.jetbrains.compose.material3:material3 依赖库版本为 1.11.0-alpha04；
+* 修改 androidx.compose.ui:ui 依赖库版本为 org.jetbrains.compose.ui:ui 依赖库版本为 1.11.0-alpha04；
+* 修改 androidx.compose.ui:ui-graphics 依赖库版本为 org.jetbrains.compose.ui:ui-graphics 依赖库版本为 1.11.0-alpha04；
+* 修改 androidx.compose.ui:ui-tooling 依赖库版本为 org.jetbrains.compose.ui:ui-tooling 依赖库版本为 1.11.0-alpha04；
+* 修改 androidx.compose.ui:ui-tooling-preview 依赖库版本为 org.jetbrains.compose.ui:ui-tooling-preview 依赖库版本为 1.11.0-alpha04；
+* 修改 androidx.compose.foundation:foundation 依赖库版本为 org.jetbrains.compose.foundation:foundation 依赖库版本为 1.10.3；
+* 修改 androidx.compose.material:material-icons-extended 依赖库版本为 org.jetbrains.compose.material:material-icons-extended 依赖库版本为 1.7.3；
+* 添加 org.jetbrains.compose.runtime:runtime 依赖库版本为 1.10.3；
+* 添加 org.jetbrains.compose.components:components-resources 依赖库版本为 1.11.0-alpha04；
 
 ## 0.1.3
 

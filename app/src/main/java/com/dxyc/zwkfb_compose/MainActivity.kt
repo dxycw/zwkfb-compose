@@ -1,5 +1,6 @@
 package com.dxyc.zwkfb_compose
 
+import android.app.Activity
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.compose.foundation.layout.Box
@@ -65,6 +66,7 @@ import 安卓x.组合.材质3.模态底部面板
 import 安卓x.组合.材质3.线性进度指示器
 import 安卓x.组合.材质3.脚手架
 import 安卓x.组合.界面.修饰符
+import 自定义.活动类.启动活动
 
 
 class MainActivity : 组件活动() {
@@ -72,22 +74,21 @@ class MainActivity : 组件活动() {
         super.onCreate(savedInstanceState)
         启用边缘到边缘()
         置内容 {
-            Home()
+            Home(this)
             //SimpleDrawer()
         }
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Preview
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_DESK)
 @Composable
-fun Home() {
+fun Home(上下文 : Activity? = 本地活动.current) {
     AppTheme {
-        val 上下文 = 本地活动.current
         val 状态 = remember { SnackbarHostState() }
         val 范围 = rememberCoroutineScope()
+        var 显示日期选择器 by remember { mutableStateOf(false) }
         脚手架(
             修饰符 = 修饰符.fillMaxSize(),
             提示条容器 = { SnackbarHost(状态) },
@@ -112,55 +113,53 @@ fun Home() {
                                 SnackbarResult.Dismissed -> {}
                             }
                         }
-//                        上下文!!.切换窗口(欢迎窗口::class.java)
+                        上下文!!.启动活动(欢迎窗口::class.java)
                     }
                 ) { 文本(文本 = "显示") }
             },
         ) { 内边距 ->
-
-            var 显示日期选择器 by remember { mutableStateOf(false) }
-            选择容器{
-                列(
-                    修饰符 = 修饰符.padding(内边距)
+            列{
+                选择容器{
+                    列(
+                        修饰符 = 修饰符.padding(内边距)
 //                        .verticalScroll(rememberScrollState())
-                ) {
+                    ) {
 //                    ClickToLoadLinear()
 
-                    按钮(单击回调 = { 显示日期选择器 = !显示日期选择器 }) { 文本(文本 = "显示") }
-
-                    图标按钮(
-                        单击回调 = {}
-                    ){ 图标(Icons.Filled.ArrowDropDown, 内容描述 = null) }
-                    var 状态2 by remember { mutableStateOf(false) }
-                    RadioButton(
-                        selected = 状态2,
-                        onClick = {
-                            状态2 = !状态2
+                        按钮(单击回调 = { 显示日期选择器 = !显示日期选择器 }) {
+                            文本(文本 = "显示")
                         }
-                    )
 
-                    var 状态1 by remember { mutableStateOf(false) }
-                    Checkbox(
-                        checked = 状态1,
-                        onCheckedChange = {
-                            状态1 = it
+                        图标按钮(单击回调 = {}){
+                            图标(Icons.Filled.ArrowDropDown, 内容描述 = null)
                         }
-                    )
+                        var 状态2 by remember { mutableStateOf(false) }
+                        RadioButton(
+                            selected = 状态2,
+                            onClick = { 状态2 = !状态2 }
+                        )
 
-                    var 状态 by remember { mutableStateOf(ToggleableState.Indeterminate) }
-                    TriStateCheckbox(
-                        state = 状态,
-                        onClick = {
-                            if (状态 == ToggleableState.Off) {
-                                状态 = ToggleableState.On
-                            } else if (状态 == ToggleableState.On) {
-                                状态 = ToggleableState.Indeterminate
-                            } else {
-                                状态 = ToggleableState.Off
+                        var 状态1 by remember { mutableStateOf(false) }
+                        Checkbox(
+                            checked = 状态1,
+                            onCheckedChange = { 状态1 = it }
+                        )
+
+                        var 状态 by remember { mutableStateOf(ToggleableState.Indeterminate) }
+                        TriStateCheckbox(
+                            state = 状态,
+                            onClick = {
+                                if (状态 == ToggleableState.Off) {
+                                    状态 = ToggleableState.On
+                                } else if (状态 == ToggleableState.On) {
+                                    状态 = ToggleableState.Indeterminate
+                                } else {
+                                    状态 = ToggleableState.Off
+                                }
                             }
-                        }
-                    )
+                        )
 
+                    }
                 }
             }
 

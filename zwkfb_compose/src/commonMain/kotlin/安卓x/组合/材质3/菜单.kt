@@ -212,6 +212,7 @@ fun 下拉菜单项(
     颜色: MenuItemColors = MenuDefaults.itemColors(),
     内容内边距: PaddingValues = MenuDefaults.DropdownMenuSelectableItemContentPadding,
     交互源: MutableInteractionSource? = null,
+    辅助文本: @Composable (() -> Unit)? = null,
 ) {
     DropdownMenuItem(
         onClick = 单击回调,
@@ -224,6 +225,7 @@ fun 下拉菜单项(
         colors = 颜色,
         contentPadding = 内容内边距,
         interactionSource = 交互源,
+        supportingText = 辅助文本,
     )
 }
 
