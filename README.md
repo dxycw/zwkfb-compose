@@ -1,4 +1,10 @@
-# zwkfb_compose
+# 停更
+本项目将不再更新，如果还想使用本项目目前可以继续使用，或使用新项目[multiplatform-zwkfb](https://github.com/dxycw/multiplatform-zwkfb)，
+次项目用于Kotlin多平台（Android、iOS、Desktop (Windows, MacOS, and Linux)、js、wasmJs和web）的“zwkfb”中文开发包，使用Jetpack Compose Multiplatform开发。
+
+
+
+# ~~zwkfb_compose~~
 
 [![](https://jitpack.io/v/dxycw/zwkfb_compose.svg)](https://jitpack.io/#dxycw/zwkfb_compose)
 
